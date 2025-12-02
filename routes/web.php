@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CardapioController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FuncionariosController;
-use App\Http\Controllers\MesasController;
+use App\Http\Controllers\MesaController;
 use App\Http\Controllers\ReservasController;
 use Illuminate\Support\Facades\Route;
 

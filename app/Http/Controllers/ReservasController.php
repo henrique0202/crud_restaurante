@@ -7,7 +7,7 @@ use App\Models\Cliente;
 use App\Models\Mesa;
 use Illuminate\Http\Request;
 
-class ReservaController extends Controller
+class ReservasController extends Controller
 {
     public function index()
     {

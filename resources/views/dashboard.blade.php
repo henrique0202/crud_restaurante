@@ -12,6 +12,18 @@
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.*')">
                         Clientes
                     </x-nav-link>
+                    <x-nav-link href="{{ route('mesas.index') }}" :active="request()->routeIs('mesas.*')">
+                        Mesas
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('reservas.index') }}" :active="request()->routeIs('reservas.*')">
+                        Reservas
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('funcionarios.index') }}" :active="request()->routeIs('funcionarios.*')">
+                        Funcionarios
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('cardapio.index') }}" :active="request()->routeIs('cardapio.*')">
+                        Cardapio
+                    </x-nav-link>
                 </div>
             </div>
         </div>
