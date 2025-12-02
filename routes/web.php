@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CardapioController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\FuncionariosController;
+use App\Http\Controllers\MesasController;
+use App\Http\Controllers\ReservasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('clientes', ClientesController::class);
+    Route::resource('mesas', MesaController::class);
+    Route::resource('funcionarios', FuncionariosController::class);
+    Route::resource('reservas', ReservasController::class);
+    Route::resource('cardapio', CardapioController::class);
 
 });
 

@@ -2,55 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clientes;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class ClientesController extends Controller
+class ClienteController extends Controller
 {
-    public function index() {
-        $clientes = Clientes::all();
+    public function index()
+    {
+        $clientes = Cliente::all();
         return view('clientes.index', compact('clientes'));
     }
 
-
-    public function create() {
+    public function create()
+    {
         return view('clientes.create');
     }
 
-
-    public function store(Request $request) {
-        $request->validate([
-        'nome' => 'required',
-        'telefone' => 'required',
-        'email' => 'required|email|unique:clientes'
-    ]);
-
-
-    Clientes::create($request->all());
-        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
+    public function store(Request $request)
+    {
+        Cliente::create($request->all());
+        return redirect()->route('clientes.index');
     }
 
-
-    public function edit(Clientes $cliente) {
+    public function edit($id)
+    {
+        $cliente = Cliente::findOrFail($id);
         return view('clientes.edit', compact('cliente'));
     }
 
-
-    public function update(Request $request, Clientes $cliente) {
-        $request->validate([
-        'nome' => 'required',
-        'telefone' => 'required',
-        'email' => 'required|email|unique:clientes,email,' . $cliente->id
-    ]);
-
-
-    $cliente->update($request->all());
-        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
+    public function update(Request $request, $id)
+    {
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update($request->all());
+        return redirect()->route('clientes.index');
     }
 
-
-    public function destroy(Clientes $cliente) {
-        $cliente->delete();
-        return redirect()->route('clientes.index')->with('success', 'Cliente removido!');
+    public function destroy($id)
+    {
+        Cliente::destroy($id);
+        return redirect()->route('clientes.index');
     }
 }
