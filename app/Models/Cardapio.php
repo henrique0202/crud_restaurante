@@ -11,7 +11,6 @@ class Cardapio extends Model
 
     protected $fillable = [
         'nome',
-        'descricao',
         'preco',
         'categoria'
     ];

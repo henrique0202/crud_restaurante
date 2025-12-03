@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Funcionario;
 use Illuminate\Http\Request;
 
-class FuncionarioController extends Controller
+class FuncionariosController extends Controller
 {
     public function index()
     {
