@@ -21,8 +21,8 @@
                     <x-nav-link href="{{ route('funcionarios.index') }}" :active="request()->routeIs('funcionarios.*')">
                         Funcionarios
                     </x-nav-link>
-                    <x-nav-link href="{{ route('cardapio.index') }}" :active="request()->routeIs('cardapio.*')">
-                        Cardapio
+                    <x-nav-link href="{{ route('fornecedores.index') }}" :active="request()->routeIs('fornecedores.*')">
+                        Fornecedores
                     </x-nav-link>
                 </div>
             </div>

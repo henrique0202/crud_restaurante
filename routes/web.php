@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CardapioController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\ReservasController;
+use App\Http\Controllers\FornecedorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('mesas', MesaController::class);
     Route::resource('funcionarios', FuncionariosController::class);
     Route::resource('reservas', ReservasController::class);
-    Route::resource('cardapio', CardapioController::class);
+    Route::resource('fornecedores', FornecedorController::class);
 
 });
 
