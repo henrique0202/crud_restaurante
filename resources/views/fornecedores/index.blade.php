@@ -1,39 +1,64 @@
 <x-app-layout>
-    <h1>Lista de Fornecedores</h1>
+    <div class="max-w-6xl mx-auto mt-10 bg-[#f5e6c8] p-8 rounded-xl shadow-lg">
 
-    <a href="{{ route('fornecedores.create') }}">Novo Fornecedor</a>
+        <h1 class="text-3xl font-bold text-black mb-6 text-center">Lista de Fornecedores</h1>
 
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>Produto Fornecido</th>
-            <th>CNPJ</th>
-            <th>Endereço</th>
-            <th>Ações</th>
-        </tr>
+        <div class="flex justify-end mb-4">
+            <a href="{{ route('fornecedores.create') }}"
+                class="bg-black text-white px-4 py-2 rounded-md font-semibold 
+                       hover:bg-white hover:text-black hover:border hover:border-black transition">
+                Novo Fornecedor
+            </a>
+        </div>
 
-        @foreach($fornecedores as $fornecedor)
-            <tr>
-                <td>{{ $fornecedor->id }}</td>
-                <td>{{ $fornecedor->nome }}</td>
-                <td>{{ $fornecedor->telefone }}</td>
-                <td>{{ $fornecedor->email }}</td>
-                <td>{{ $fornecedor->produto_fornecido }}</td>
-                <td>{{ $fornecedor->cnpj }}</td>
-                <td>{{ $fornecedor->endereco }}</td>
-                <td>
-                    <a href="{{ route('fornecedores.edit', $fornecedor) }}">Editar</a>
-                    |
-                    <form action="{{ route('fornecedores.destroy', $fornecedor) }}" method="POST" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+        <div class="overflow-x-auto">
+            <table class="w-full border border-black bg-white rounded-lg overflow-hidden">
+                <thead class="bg-black text-white">
+                    <tr>
+                        <th class="p-2 border border-black">ID</th>
+                        <th class="p-2 border border-black">Nome</th>
+                        <th class="p-2 border border-black">Telefone</th>
+                        <th class="p-2 border border-black">Email</th>
+                        <th class="p-2 border border-black">Produto Fornecido</th>
+                        <th class="p-2 border border-black">CNPJ</th>
+                        <th class="p-2 border border-black">Endereço</th>
+                        <th class="p-2 border border-black">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($fornecedores as $fornecedor)
+                        <tr class="hover:bg-[#f5e6c8] transition">
+                            <td class="p-2 border border-black text-center">{{ $fornecedor->id }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->nome }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->telefone }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->email }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->produto_fornecido }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->cnpj }}</td>
+                            <td class="p-2 border border-black">{{ $fornecedor->endereco }}</td>
+
+                            <td class="p-2 border border-black text-center">
+                                <a href="{{ route('fornecedores.edit', $fornecedor) }}"
+                                   class="text-black font-semibold hover:underline">Editar</a>
+
+                                <form action="{{ route('fornecedores.destroy', $fornecedor) }}" 
+                                      method="POST" 
+                                      class="inline-block ml-2">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button 
+                                        type="submit"
+                                        class="text-red-600 font-semibold hover:underline">
+                                        Excluir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </x-app-layout>

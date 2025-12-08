@@ -1,32 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Mesa</title>
-</head>
-<body>
+<x-app-layout>
 
-    <h1>Editar Mesa</h1>
+    <div class="max-w-xl mx-auto bg-[#F5DEB3] p-6 rounded-lg shadow-lg mt-10">
 
-    <form action="{{ route('mesas.update', $mesa->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+        <h1 class="text-3xl font-bold text-black mb-6 text-center">
+            Editar Mesa
+        </h1>
 
-        <label>Número da Mesa:</label><br>
-        <input type="number" name="numero" value="{{ $mesa->numero }}" required><br><br>
+        <form action="{{ route('mesas.update', $mesa->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-        <label>Lugares:</label><br>
-        <input type="number" name="lugares" value="{{ $mesa->lugares }}" required><br><br>
+            <label class="block font-semibold text-black mb-1">Número da Mesa:</label>
+            <input 
+                type="number" 
+                name="numero" 
+                value="{{ $mesa->numero }}" 
+                required
+                class="w-full border-2 border-black rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-black"
+            >
 
-        <label>Status:</label><br>
-        <select name="status">
-            <option value="livre" {{ $mesa->status == 'livre' ? 'selected' : '' }}>Livre</option>
-            <option value="ocupada" {{ $mesa->status == 'ocupada' ? 'selected' : '' }}>Ocupada</option>
-            <option value="reservada" {{ $mesa->status == 'reservada' ? 'selected' : '' }}>Reservada</option>
-        </select><br><br>
+            <label class="block font-semibold text-black mb-1">Lugares:</label>
+            <input 
+                type="number" 
+                name="lugares" 
+                value="{{ $mesa->lugares }}" 
+                required
+                class="w-full border-2 border-black rounded p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-black"
+            >
 
-        <button type="submit">Atualizar</button>
-    </form>
+            <label class="block font-semibold text-black mb-1">Status:</label>
+            <select 
+                name="status" 
+                class="w-full border-2 border-black rounded p-2 mb-6 bg-white focus:outline-none focus:ring-2 focus:ring-black"
+            >
+                <option value="livre" {{ $mesa->status == 'livre' ? 'selected' : '' }}>Livre</option>
+                <option value="ocupada" {{ $mesa->status == 'ocupada' ? 'selected' : '' }}>Ocupada</option>
+                <option value="reservada" {{ $mesa->status == 'reservada' ? 'selected' : '' }}>Reservada</option>
+            </select>
 
-</body>
-</html>
+            <button 
+                type="submit" 
+                class="w-full bg-black text-white font-semibold py-2 rounded hover:bg-[#F5DEB3] hover:text-black transition"
+            >
+                Atualizar
+            </button>
+        </form>
+
+    </div>
+
+</x-app-layout>

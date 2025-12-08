@@ -1,45 +1,61 @@
 <x-app-layout>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Listagem de Mesas</title>
-</head>
-<body>
 
-    <h1>Listagem de Mesas</h1>
+    <div class="max-w-5xl mx-auto mt-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
 
-    <a href="{{ route('mesas.create') }}">Cadastrar Mesa</a>
+        <h1 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            Listagem de Mesas
+        </h1>
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tr>
-            <th>ID</th>
-            <th>Número</th>
-            <th>Lugares</th>
-            <th>Status</th>
-            <th>Ações</th>
-        </tr>
+        <a href="{{ route('mesas.create') }}"
+           class="inline-block mb-6 bg-yellow-200 text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition">
+            Cadastrar Mesa
+        </a>
 
-        @foreach ($mesas as $mesa)
-        <tr>
-            <td>{{ $mesa->id }}</td>
-            <td>{{ $mesa->numero }}</td>
-            <td>{{ $mesa->lugares }}</td>
-            <td>{{ $mesa->status }}</td>
-            <td>
-                <a href="{{ route('mesas.edit', $mesa->id) }}">Editar</a>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse rounded-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-black text-white">
+                        <th class="px-4 py-3 text-left">ID</th>
+                        <th class="px-4 py-3 text-left">Número</th>
+                        <th class="px-4 py-3 text-left">Lugares</th>
+                        <th class="px-4 py-3 text-left">Status</th>
+                        <th class="px-4 py-3 text-left">Ações</th>
+                    </tr>
+                </thead>
 
-                <form action="{{ route('mesas.destroy', $mesa->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Excluir</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
+                <tbody class="bg-yellow-50">
+                    @foreach ($mesas as $mesa)
+                    <tr class="border-b border-gray-300 hover:bg-yellow-100">
+                        <td class="px-4 py-3">{{ $mesa->id }}</td>
+                        <td class="px-4 py-3">{{ $mesa->numero }}</td>
+                        <td class="px-4 py-3">{{ $mesa->lugares }}</td>
+                        <td class="px-4 py-3">{{ $mesa->status }}</td>
+                        <td class="px-4 py-3 flex items-center gap-3">
 
-    </table>
+                            <a href="{{ route('mesas.edit', $mesa->id) }}"
+                               class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
+                                Editar
+                            </a>
 
-</body>
-</html>
+                            <form action="{{ route('mesas.destroy', $mesa->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit"
+                                        class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                                        onclick="return confirm('Tem certeza que deseja excluir?')">
+                                    Excluir
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
 </x-app-layout>

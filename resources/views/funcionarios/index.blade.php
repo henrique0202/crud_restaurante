@@ -1,33 +1,61 @@
 <x-app-layout>
-    <h1>Listagem de Funcionários</h1>
+    <div class="max-w-5xl mx-auto mt-10 bg-[#f5e6c8] p-8 rounded-xl shadow-lg">
 
-    <a href="{{ route('funcionarios.create') }}">Novo Funcionário</a>
+        <h1 class="text-3xl font-bold text-black mb-6 text-center">Listagem de Funcionários</h1>
 
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Cargo</th>
-            <th>Salário</th>
-            <th>Ações</th>
-        </tr>
+        <div class="flex justify-end mb-4">
+            <a href="{{ route('funcionarios.create') }}"
+               class="bg-black text-white px-4 py-2 rounded-md font-semibold
+                      hover:bg-white hover:text-black hover:border hover:border-black transition">
+                Novo Funcionário
+            </a>
+        </div>
 
-        @foreach($funcionarios as $funcionario)
-            <tr>
-                <td>{{ $funcionario->id }}</td>
-                <td>{{ $funcionario->nome }}</td>
-                <td>{{ $funcionario->cargo }}</td>
-                <td>R$ {{ $funcionario->salario }}</td>
-                <td>
-                    <a href="{{ route('funcionarios.edit', $funcionario) }}">Editar</a>
-                    |
-                    <form action="{{ route('funcionarios.destroy', $funcionario) }}" method="POST" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+        <div class="overflow-x-auto">
+            <table class="w-full border border-black bg-white rounded-lg overflow-hidden">
+                <thead class="bg-black text-white">
+                    <tr>
+                        <th class="p-2 border border-black">ID</th>
+                        <th class="p-2 border border-black">Nome</th>
+                        <th class="p-2 border border-black">Cargo</th>
+                        <th class="p-2 border border-black">Salário</th>
+                        <th class="p-2 border border-black">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($funcionarios as $funcionario)
+                        <tr class="hover:bg-[#f5e6c8] transition">
+                            <td class="p-2 border border-black text-center">{{ $funcionario->id }}</td>
+                            <td class="p-2 border border-black">{{ $funcionario->nome }}</td>
+                            <td class="p-2 border border-black">{{ $funcionario->cargo }}</td>
+                            <td class="p-2 border border-black">R$ {{ number_format($funcionario->salario, 2, ',', '.') }}</td>
+
+                            <td class="p-2 border border-black text-center">
+                                <a href="{{ route('funcionarios.edit', $funcionario) }}"
+                                   class="text-black font-semibold hover:underline">
+                                    Editar
+                                </a>
+
+                                <form action="{{ route('funcionarios.destroy', $funcionario) }}" 
+                                      method="POST" 
+                                      class="inline-block ml-2">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button 
+                                        type="submit"
+                                        class="text-red-600 font-semibold hover:underline">
+                                        Excluir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
 </x-app-layout>

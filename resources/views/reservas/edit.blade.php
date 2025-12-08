@@ -1,45 +1,84 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Reserva</title>
-</head>
-<body>
+<x-app-layout>
 
-    <h1>Editar Reserva</h1>
+    <div class="max-w-3xl mx-auto bg-[#F5DEB3] p-6 rounded-lg shadow-lg mt-10">
 
-    <form action="{{ route('reservas.update', $reserva->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+        <h1 class="text-3xl font-bold text-black mb-6 text-center">
+            Editar Reserva
+        </h1>
 
-        <label>Cliente:</label><br>
-        <select name="cliente_id">
-            @foreach ($clientes as $cliente)
-            <option value="{{ $cliente->id }}" 
-                {{ $cliente->id == $reserva->cliente_id ? 'selected' : '' }}>
-                {{ $cliente->nome }}
-            </option>
-            @endforeach
-        </select><br><br>
+        <form action="{{ route('reservas.update', $reserva->id) }}" method="POST" class="space-y-4">
+            @csrf
+            @method('PUT')
 
-        <label>Mesa:</label><br>
-        <select name="mesa_id">
-            @foreach ($mesas as $mesa)
-            <option value="{{ $mesa->id }}"
-                {{ $mesa->id == $reserva->mesa_id ? 'selected' : '' }}>
-                Mesa {{ $mesa->numero }}
-            </option>
-            @endforeach
-        </select><br><br>
+            <div>
+                <label class="font-semibold text-black">Cliente:</label>
+                <select 
+                    name="cliente_id" 
+                    class="w-full border border-black rounded p-2 bg-white"
+                    required
+                >
+                    @foreach ($clientes as $cliente)
+                        <option 
+                            value="{{ $cliente->id }}"
+                            {{ $cliente->id == $reserva->cliente_id ? 'selected' : '' }}
+                        >
+                            {{ $cliente->nome }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-        <label>Data:</label><br>
-        <input type="date" name="data" value="{{ $reserva->data }}" required><br><br>
+            <div>
+                <label class="font-semibold text-black">Mesa:</label>
+                <select 
+                    name="mesa_id" 
+                    class="w-full border border-black rounded p-2 bg-white"
+                    required
+                >
+                    @foreach ($mesas as $mesa)
+                        <option 
+                            value="{{ $mesa->id }}"
+                            {{ $mesa->id == $reserva->mesa_id ? 'selected' : '' }}
+                        >
+                            Mesa {{ $mesa->numero }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-        <label>Hora:</label><br>
-        <input type="time" name="hora" value="{{ $reserva->hora }}" required><br><br>
+            <div>
+                <label class="font-semibold text-black">Data:</label>
+                <input 
+                    type="date" 
+                    name="data" 
+                    value="{{ $reserva->data }}" 
+                    class="w-full border border-black rounded p-2 bg-white"
+                    required
+                >
+            </div>
 
-        <button type="submit">Atualizar</button>
-    </form>
+            <div>
+                <label class="font-semibold text-black">Hora:</label>
+                <input 
+                    type="time" 
+                    name="hora" 
+                    value="{{ $reserva->hora }}" 
+                    class="w-full border border-black rounded p-2 bg-white"
+                    required
+                >
+            </div>
 
-</body>
-</html>
+            <div class="text-center">
+                <button 
+                    type="submit" 
+                    class="bg-black text-white px-6 py-2 rounded font-semibold hover:bg-[#F5DEB3] hover:text-black border-2 border-black transition"
+                >
+                    Atualizar
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</x-app-layout>

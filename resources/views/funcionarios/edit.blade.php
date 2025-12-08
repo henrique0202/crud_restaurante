@@ -1,33 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Mesa</title>
-</head>
-<body>
+<x-app-layout>
+    <div class="max-w-2xl mx-auto mt-10 bg-[#f5e6c8] p-8 rounded-xl shadow-lg">
 
-    <h1>Editar Funcionário</h1>
+        <h1 class="text-2xl font-bold text-black mb-6 text-center">Editar Funcionário</h1>
 
-    <form action="{{ route('funcionarios.update', $funcionario) }}" method="POST">
-        @csrf
-        @method('PUT')
+        <form action="{{ route('funcionarios.update', $funcionario) }}" method="POST" class="space-y-4">
+            @csrf
+            @method('PUT')
 
-        <label>Nome:</label><br>
-        <input type="text" name="nome" value="{{ $funcionario->nome }}"><br><br>
+            <div>
+                <label class="block text-black font-semibold mb-1">Nome:</label>
+                <input 
+                    type="text" 
+                    name="nome" 
+                    value="{{ $funcionario->nome }}"
+                    class="w-full p-2 border border-black rounded-md bg-white 
+                           focus:outline-none focus:ring-2 focus:ring-black">
+            </div>
 
-        <label>Cargo:</label><br>
-        <input type="text" name="cargo" value="{{ $funcionario->cargo }}"><br><br>
+            <div>
+                <label class="block text-black font-semibold mb-1">Cargo:</label>
+                <input 
+                    type="text" 
+                    name="cargo" 
+                    value="{{ $funcionario->cargo }}"
+                    class="w-full p-2 border border-black rounded-md bg-white 
+                           focus:outline-none focus:ring-2 focus:ring-black">
+            </div>
 
-        <label>Salário:</label><br>
-        <input type="number" name="salario" value="{{ $funcionario->salario }}" step="0.01"><br><br>
+            <div>
+                <label class="block text-black font-semibold mb-1">Salário:</label>
+                <input 
+                    type="number" 
+                    step="0.01"
+                    name="salario" 
+                    value="{{ $funcionario->salario }}"
+                    class="w-full p-2 border border-black rounded-md bg-white 
+                           focus:outline-none focus:ring-2 focus:ring-black">
+            </div>
 
-        <label>Telefone:</label><br>
-        <input type="text" name="telefone" value="{{ $funcionario->telefone }}"><br><br>
+            <div>
+                <label class="block text-black font-semibold mb-1">Telefone:</label>
+                <input 
+                    type="text" 
+                    name="telefone" 
+                    value="{{ $funcionario->telefone }}"
+                    class="w-full p-2 border border-black rounded-md bg-white 
+                           focus:outline-none focus:ring-2 focus:ring-black">
+            </div>
 
-        <button type="submit">Atualizar</button>
-    </form>
+            <button 
+                type="submit"
+                class="w-full bg-black text-white py-2 rounded-md font-semibold 
+                       hover:bg-white hover:text-black hover:border hover:border-black transition">
+                Atualizar
+            </button>
+        </form>
 
-    <br>
-    <a href="{{ route('funcionarios.index') }}">Voltar</a>
-</body>
-</html>
+        <div class="mt-4 text-center">
+            <a href="{{ route('funcionarios.index') }}" 
+               class="text-black font-semibold hover:underline">
+                Voltar
+            </a>
+        </div>
+
+    </div>
+</x-app-layout>
