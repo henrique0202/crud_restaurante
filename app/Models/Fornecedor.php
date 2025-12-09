@@ -13,7 +13,5 @@ class Fornecedor extends Model
         'telefone',
         'email',
         'produto_fornecido',
-        'cnpj',
-        'endereco',
     ];
 }

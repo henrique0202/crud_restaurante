@@ -37,22 +37,6 @@
                            focus:outline-none focus:ring-2 focus:ring-black">
             </div>
 
-            <div>
-                <label class="block text-black font-semibold mb-1">CNPJ:</label>
-                <input 
-                    type="text" name="cnpj"
-                    class="w-full p-2 border border-black rounded-md bg-white 
-                           focus:outline-none focus:ring-2 focus:ring-black">
-            </div>
-
-            <div>
-                <label class="block text-black font-semibold mb-1">Endereço:</label>
-                <input 
-                    type="text" name="endereco"
-                    class="w-full p-2 border border-black rounded-md bg-white 
-                           focus:outline-none focus:ring-2 focus:ring-black">
-            </div>
-
             <button 
                 type="submit"
                 class="w-full bg-black text-white py-2 rounded-md font-semibold 

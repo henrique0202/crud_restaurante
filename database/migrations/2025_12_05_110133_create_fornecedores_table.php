@@ -14,8 +14,6 @@ return new class extends Migration
             $table->string('telefone')->nullable();
             $table->string('email')->nullable();
             $table->string('produto_fornecido')->nullable();
-            $table->string('cnpj')->nullable();
-            $table->string('endereco')->nullable();
             $table->timestamps();
         });
     }

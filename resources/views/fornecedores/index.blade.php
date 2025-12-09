@@ -20,8 +20,6 @@
                         <th class="p-2 border border-black">Telefone</th>
                         <th class="p-2 border border-black">Email</th>
                         <th class="p-2 border border-black">Produto Fornecido</th>
-                        <th class="p-2 border border-black">CNPJ</th>
-                        <th class="p-2 border border-black">Endereço</th>
                         <th class="p-2 border border-black">Ações</th>
                     </tr>
                 </thead>
@@ -34,8 +32,6 @@
                             <td class="p-2 border border-black">{{ $fornecedor->telefone }}</td>
                             <td class="p-2 border border-black">{{ $fornecedor->email }}</td>
                             <td class="p-2 border border-black">{{ $fornecedor->produto_fornecido }}</td>
-                            <td class="p-2 border border-black">{{ $fornecedor->cnpj }}</td>
-                            <td class="p-2 border border-black">{{ $fornecedor->endereco }}</td>
 
                             <td class="p-2 border border-black text-center">
                                 <a href="{{ route('fornecedores.edit', $fornecedor) }}"

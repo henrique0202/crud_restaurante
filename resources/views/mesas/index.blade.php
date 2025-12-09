@@ -5,6 +5,11 @@
         <h1 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
             Listagem de Mesas
         </h1>
+        @if(session('success'))
+            <div style="padding: 10px; background: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 15px;">
+                {{ session('success') }}
+            </div>
+        @endif
 
         <a href="{{ route('mesas.create') }}"
            class="inline-block mb-6 bg-yellow-200 text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition">

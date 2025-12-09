@@ -20,8 +20,13 @@ class FuncionariosController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+        'nome' => 'required|string|max:255',
+        'cargo' => 'required|string|max:255',
+        'telefone' => 'required|string|max:20',
+    ]);
         Funcionario::create($request->all());
-        return redirect()->route('funcionarios.index');
+        return redirect()->route('funcionarios.index')->with('success','funcionario cadastrado com sucesso');
     }
 
     public function edit($id)
@@ -32,9 +37,14 @@ class FuncionariosController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+        'nome' => 'required|string|max:255',
+        'cargo' => 'required|string|max:255',
+        'telefone' => 'required|string|max:20',
+    ]);
         $funcionario = Funcionario::findOrFail($id);
         $funcionario->update($request->all());
-        return redirect()->route('funcionarios.index');
+        return redirect()->route('funcionarios.index')->with('success','funcionario atualizado com sucesso');
     }
 
     public function destroy($id)

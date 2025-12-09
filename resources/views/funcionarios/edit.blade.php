@@ -28,17 +28,6 @@
             </div>
 
             <div>
-                <label class="block text-black font-semibold mb-1">Salário:</label>
-                <input 
-                    type="number" 
-                    step="0.01"
-                    name="salario" 
-                    value="{{ $funcionario->salario }}"
-                    class="w-full p-2 border border-black rounded-md bg-white 
-                           focus:outline-none focus:ring-2 focus:ring-black">
-            </div>
-
-            <div>
                 <label class="block text-black font-semibold mb-1">Telefone:</label>
                 <input 
                     type="text" 
