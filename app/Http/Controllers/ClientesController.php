@@ -21,13 +21,18 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'nome' => 'required|string|max:255',
-        'email' => 'required|string|min:25',
-        'telefone' => 'required|email|unique:clientes,email',
-    ]);
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email|unique:clientes,email',
+            'telefone' => 'required|string|min:8|max:20',
+        ]);
+
         Cliente::create($request->all());
-        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso!');
+
+        return redirect()
+            ->route('clientes.index')
+            ->with('success', 'Cliente cadastrado com sucesso!');
     }
+
 
     public function edit($id)
     {
@@ -39,7 +44,7 @@ class ClientesController extends Controller
     {
         $request->validate([
         'nome' => 'required|string|max:255',
-        'telefone' => 'required|string|max:20',
+        'telefone' => 'required|string||min:8|max:20',
         'email' => 'required|email|unique:clientes,email,' . $id,
     ]);
 

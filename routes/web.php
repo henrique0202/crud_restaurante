@@ -25,7 +25,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('mesas', MesaController::class);
     Route::resource('funcionarios', FuncionariosController::class);
     Route::resource('reservas', ReservasController::class);
-    Route::resource('fornecedores', FornecedorController::class);
+    Route::resource('fornecedores', FornecedorController::class)->parameters([
+        'fornecedores' => 'fornecedor'
+    ]);;
 
 });
 

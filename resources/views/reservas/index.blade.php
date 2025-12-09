@@ -31,11 +31,11 @@
                     <td class="py-3 px-4">{{ $reserva->id }}</td>
 
                     <td class="py-3 px-4">
-                        {{ $reserva->cliente->nome ?? 'Cliente não encontrado' }}
+                        {{ $reserva->cliente->nome ?? 'cliente_id' }}
                     </td>
 
                     <td class="py-3 px-4">
-                        Mesa {{ $reserva->mesa->numero ?? '—' }}
+                        Mesa {{ $reserva->mesa->numero ?? 'mesa_id' }}
                     </td>
 
                     <td class="py-3 px-4">{{ $reserva->data }}</td>
